@@ -1,0 +1,9 @@
+name: JobForm
+version: 1
+api:
+- 3.0.0
+- 3.0.0-ALPHA12
+- 3.0.4
+- 3.0.5
+main: Eren5960\Job\Main
+author: Eren5960
