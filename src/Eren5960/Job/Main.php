@@ -67,7 +67,7 @@ class Main extends PluginBase{
 	
 	private function getEarn(Player $p, string $label):int
 	{
-   return $this->cfg->get($this->getPlayerJob($p))[$label];
+                return $this->cfg->get($this->getPlayerJob($p))[$label];
 	}
 	
 	public function jobs():array
@@ -80,7 +80,7 @@ class Main extends PluginBase{
 		if($this->inJob($p)){
 			return false;
 		}else{
-			  $this->qjob[$p->getName()] = $jobName;
+			$this->qjob[$p->getName()] = $jobName;
 		   	return true;
 		}
 	}
@@ -109,16 +109,17 @@ class Main extends PluginBase{
 		$this->eco->addMoney($p,$this->getEarn($p,$label)); 
 	}
 	
-   public function subJobs(Player $p, string $nameii):bool{
-           $values = $this->cfg->get($this->getPlayerJob($p));
-           return isset($values[$nameii]) ? true : false;
-   }
+        public function subJobs(Player $p, string $nameii):bool
+	{
+                $values = $this->cfg->get($this->getPlayerJob($p));
+                return isset($values[$nameii]) ? true : false;
+        }
 
 	public function buttons(Player $p):array
 	{
-      $l = [];
-      $lang = new Lang($p);
-      $l[] = new MenuOption($lang->translate("Job.quit.button.name"));
+                $l = [];
+                $lang = new Lang($p);
+                $l[] = new MenuOption($lang->translate("Job.quit.button.name"));
 		foreach($this->jobs() as $name => $money){
 		  	  $l[] = new MenuOption($name, new FormIcon($this->cfg->get($name)["image"], FormIcon::IMAGE_TYPE_PATH));
 		}
