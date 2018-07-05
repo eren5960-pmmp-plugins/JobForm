@@ -13,7 +13,7 @@
  *
  */
 declare(strict_types=1);
-namespace Enes5519\ShopMenu\lang;
+namespace Eren5960\Job\lang;
 use pocketmine\Player;
 use pocketmine\utils\MainLogger;
 class Lang{
