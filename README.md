@@ -1,5 +1,5 @@
 # JobForm
 ## JobForm is Job plugin, only Altay.
 
-#Image:
-<img src="http://i.hizliresim.com/WDYDWE.png">
+## Image:
+<a href="https://ibb.co/kGpTPy"><img src="https://preview.ibb.co/ngh4xJ/Screenshot_20180703_231442.png" alt="Screenshot_20180703_231442" border="0"></a>
