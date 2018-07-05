@@ -31,7 +31,7 @@ class JCommand extends Command{
   	if(isset($args[0])){
   	       $sender->sendMessage("Usage: /job");
   	}else{
-           $sender->sendForm(new JForm($sender));
-    }
+               $sender->sendForm(new JForm($sender));
+        }
   }
 }
