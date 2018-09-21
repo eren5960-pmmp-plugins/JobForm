@@ -13,9 +13,12 @@
  *
  */
 declare(strict_types=1);
+
 namespace Eren5960\Job\lang;
+
 use pocketmine\Player;
 use pocketmine\utils\MainLogger;
+
 class Lang{
     public const DEFAULT_LOCALE = 'en_US';
     /** @var string */
@@ -24,6 +27,7 @@ class Lang{
     protected $lang = [];
     /** @var array */
     protected static $defaultLang = [];
+
     public function __construct(Player $player){
         $locale = $player->getLocale();
         $this->locale = $locale;
@@ -31,11 +35,13 @@ class Lang{
             MainLogger::getLogger()->debug("Missing required language file $file");
         }
     }
+
     public static function init(){
         if(!self::loadLang($file = __DIR__."/locale/".self::DEFAULT_LOCALE.".ini", self::$defaultLang)){
             MainLogger::getLogger()->error("Missing required language file $file");
         }
     }
+
     protected static function loadLang(string $path, array &$output){
         if(file_exists($path)){
             $output = array_map('stripcslashes', parse_ini_file($path, false, INI_SCANNER_RAW));
@@ -43,6 +49,7 @@ class Lang{
         }
         return false;
     }
+
     public function translate(string $str, array $params = []) : string{
         $baseText = $this->get($str);
         $baseText = $this->parseTranslation($baseText !== null ? $baseText : $str);
@@ -51,12 +58,15 @@ class Lang{
         }
         return $baseText;
     }
+
     public function get(string $id){
         return isset($this->lang[$id]) ? $this->lang[$id] : (isset(self::$defaultLang[$id]) ? self::$defaultLang[$id] : $id);
     }
+
     public function internalGet(string $id){
         return isset($this->lang[$id]) ? $this->lang[$id] : (isset(self::$defaultLang[$id]) ? self::$defaultLang[$id] : null);
     }
+
     protected function parseTranslation(string $text) : string{
         $newString = "";
         $replaceString = null;
