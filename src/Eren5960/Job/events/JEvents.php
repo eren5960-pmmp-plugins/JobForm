@@ -1,16 +1,15 @@
 <?php
-
 /**
-*  _____                    ____   ___    __     ___  
-* | ____| _ __  ___  _ __  | ___| / _ \  / /_   / _ \ 
-* |  _|  | '__|/ _ \| '_ \ |___ \| (_) || '_ \ | | | |
-* | |___ | |  |  __/| | | | ___) |\__, || (_) || |_| |
-* |_____||_|   \___||_| |_||____/   /_/  \___/  \___/ 
-* 
-* @version v1.2
-* @author Eren5960
-* @link https://github.com/Eren5960/JobForm
-*/                  
+ *  _____                    ____   ___    __     ___
+ * | ____| _ __  ___  _ __  | ___| / _ \  / /_   / _ \
+ * |  _|  | '__|/ _ \| '_ \ |___ \| (_) || '_ \ | | | |
+ * | |___ | |  |  __/| | | | ___) |\__, || (_) || |_| |
+ * |_____||_|   \___||_| |_||____/   /_/  \___/  \___/
+ *
+ * @author Eren5960
+ * @link https://github.com/Eren5960
+ */
+declare(strict_types = 1);
 
 namespace Eren5960\Job\events;
 
@@ -21,16 +20,25 @@ use pocketmine\event\block\BlockEvent;
 use Eren5960\Job\Main;
 
 class JEvents implements Listener{
-	
-	public function JBreak(BlockBreakEvent $e): void{
+
+    /**
+     * @param BlockBreakEvent $e
+     */
+    public function JBreak(BlockBreakEvent $e): void{
 		$this->active($e);
 	}
 
+    /**
+     * @param BlockPlaceEvent $e
+     */
     public function JPlace(BlockPlaceEvent $e): void{
 		$this->active($e);
 	}
 
-	private function active(BlockEvent $event): void{
+    /**
+     * @param BlockEvent $event
+     */
+    private function active(BlockEvent $event): void{
 		$block = $event->getBlock();
 		$player = $event->getPlayer();
 		$api = Main::getAPI();

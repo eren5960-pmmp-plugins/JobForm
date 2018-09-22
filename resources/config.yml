@@ -1,11 +1,11 @@
 #Exlample:
 #JobName:
 # "image": "texture_path"
-# "blockid:blockmeta:break": money
+# "blockid:blockmeta:<break|place>": money count
 Oduncu:
  "image": "textures/blocks/log_oak"
- "17:0:place": 2
- "17:0:break": 2
+ "17:0:place": 10
+ "17:0:break": 20
 Madenci:
  "image": "textures/blocks/cobblestone"
  "4:0:break": 1
