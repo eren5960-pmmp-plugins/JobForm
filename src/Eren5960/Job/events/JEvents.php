@@ -25,26 +25,28 @@ class JEvents implements Listener{
      * @param BlockBreakEvent $e
      */
     public function JBreak(BlockBreakEvent $e): void{
-		$this->active($e);
+		$this->active($e, "break");
 	}
 
     /**
      * @param BlockPlaceEvent $e
      */
     public function JPlace(BlockPlaceEvent $e): void{
-		$this->active($e);
+		$this->active($e, "place");
 	}
 
     /**
      * @param BlockEvent $event
+     * @param string $type
      */
-    private function active(BlockEvent $event): void{
+    private function active(BlockEvent $event, string $type): void{
+        if(!$event instanceof BlockBreakEvent or !$event instanceof BlockPlaceEvent) return;
 		$block = $event->getBlock();
 		$player = $event->getPlayer();
 		$api = Main::getAPI();
 		if($api->inJob($player)){
-			if($api->subJobs($player, $block->getId().":".$block->getDamage().":place")){
-				$api->earnMoney($player, $block->getId().":".$block->getDamage().":place");
+			if($api->subJobs($player, $block->getId() . ":" . $block->getDamage() . ":" . $type)){
+				$api->earnMoney($player, $block->getId() . ":" . $block->getDamage() . ":" . $type);
 			}
 		}
 	}

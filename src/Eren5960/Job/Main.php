@@ -21,6 +21,7 @@ use pocketmine\form\{
 	MenuOption, FormIcon
 };
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use pocketmine\Player;
 
 class Main extends PluginBase{

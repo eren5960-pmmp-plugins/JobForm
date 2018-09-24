@@ -35,10 +35,10 @@ class JCommand extends Command{
      * @return mixed|void
      */
     public function execute(CommandSender $sender, string $line, array $args){
-    	   if(isset($args[0])){
-    	      $sender->sendMessage("Usage: /job");
-    	   }else{
+        if(isset($args[0])){
+            $sender->sendMessage("Usage: /job");
+        }else{
             $sender->sendForm(new JForm($sender));
-         }
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Eren5960\Job\forms;
 use Eren5960\Job\Main;
 use Eren5960\Job\lang\Lang;
 use pocketmine\form\{
-	Form, MenuForm, MenuOption
+	Form, MenuForm
 };
 use pocketmine\Player;
 

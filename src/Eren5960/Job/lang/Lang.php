@@ -28,6 +28,10 @@ class Lang{
     /** @var array */
     protected static $defaultLang = [];
 
+    /**
+     * Lang constructor.
+     * @param Player $player
+     */
     public function __construct(Player $player){
         $locale = $player->getLocale();
         $this->locale = $locale;
@@ -42,6 +46,11 @@ class Lang{
         }
     }
 
+    /**
+     * @param string $path
+     * @param array $output
+     * @return bool
+     */
     protected static function loadLang(string $path, array &$output){
         if(file_exists($path)){
             $output = array_map('stripcslashes', parse_ini_file($path, false, INI_SCANNER_RAW));
@@ -50,7 +59,12 @@ class Lang{
         return false;
     }
 
-    public function translate(string $str, array $params = []) : string{
+    /**
+     * @param string $str
+     * @param array $params
+     * @return string
+     */
+    public function translate(string $str, array $params = []): string{
         $baseText = $this->get($str);
         $baseText = $this->parseTranslation($baseText !== null ? $baseText : $str);
         foreach($params as $i => $p){
@@ -59,15 +73,27 @@ class Lang{
         return $baseText;
     }
 
+    /**
+     * @param string $id
+     * @return mixed|string
+     */
     public function get(string $id){
         return isset($this->lang[$id]) ? $this->lang[$id] : (isset(self::$defaultLang[$id]) ? self::$defaultLang[$id] : $id);
     }
 
+    /**
+     * @param string $id
+     * @return mixed|null
+     */
     public function internalGet(string $id){
         return isset($this->lang[$id]) ? $this->lang[$id] : (isset(self::$defaultLang[$id]) ? self::$defaultLang[$id] : null);
     }
 
-    protected function parseTranslation(string $text) : string{
+    /**
+     * @param string $text
+     * @return string
+     */
+    protected function parseTranslation(string $text): string{
         $newString = "";
         $replaceString = null;
         $len = strlen($text);
