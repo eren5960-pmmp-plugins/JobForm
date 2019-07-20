@@ -45,7 +45,7 @@ class JForm extends Menuform{
 			            $p->sendMessage($this->lang->translate("Job.no.in"));
 			        }
 			    }else{
-			        if($this->api->addJob($p,$this->getOption($option)->getText())){
+			        if($this->api->addJob($p,$this->getOption($selected)->getText())){
 			            $p->sendMessage($this->lang->translate("Job.join", [$this->getOption($selected)->getText()]));
 			        }else{
 			            $p->sendMessage($this->lang->translate("Job.in"));
