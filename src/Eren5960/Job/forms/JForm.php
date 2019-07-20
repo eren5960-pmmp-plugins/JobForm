@@ -37,7 +37,7 @@ class JForm extends Menuform{
 			$this->lang->translate("Job.title"),
 			$this->lang->translate("Job.content"),
 			$this->api->buttons($p),
-			function(Player $player,int $selected){
+			function(Player $player,int $selected):void{
 			    if($selected == 0){
 			        if($this->api->quitJob($p)){
 			            $p->sendMessage($this->lang->translate("Job.quit"));
