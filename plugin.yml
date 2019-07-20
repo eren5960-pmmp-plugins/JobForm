@@ -1,5 +1,5 @@
 name: JobForm
-version: 1.4
-api: 4.0.0
+version: 1.5
+api: [3.8.2, 3.8.3, 4.0.0]
 main: Eren5960\Job\Main
 author: Eren5960
