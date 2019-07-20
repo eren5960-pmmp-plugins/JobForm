@@ -36,28 +36,22 @@ class JForm extends Menuform{
 		parent::__construct(
 			$this->lang->translate("Job.title"),
 			$this->lang->translate("Job.content"),
-			$this->api->buttons($p)
-		);
-	}
-
-    /**
-     * @param Player $p
-     * @return null|Form
-     */
-    public function onSubmit(Player $p): ?Form{
-		if($this->getSelectedOptionIndex() === 0){
-			if($this->api->quitJob($p)){
-				$p->sendMessage($this->lang->translate("Job.quit"));
-			}else{
-				$p->sendMessage($this->lang->translate("Job.no.in"));
+			$this->api->buttons($p),
+			function(Player $player,int $selected){
+			    if($selected == 0){
+			        if($this->api->quitJob($p)){
+			            $p->sendMessage($this->lang->translate("Job.quit"));
+			        }else{
+			            $p->sendMessage($this->lang->translate("Job.no.in"));
+			        }
+			    }else{
+			        if($this->api->addJob($p,$this->getOption($option)->getText())){
+			            $p->sendMessage($this->lang->translate("Job.join", [$this->getOption($selected)->getText()]));
+			        }else{
+			            $p->sendMessage($this->lang->translate("Job.in"));
+			        }
+			    }
 			}
-		}else{
-			if($this->api->addJob($p,$this->getSelectedOption()->getText())){
-				$p->sendMessage($this->lang->translate("Job.join", [$this->getSelectedOption()->getText()]));
-		    }else{
-				$p->sendMessage($this->lang->translate("Job.in"));
-		    }
-		}
-		return null;
+		);
 	}
 }
